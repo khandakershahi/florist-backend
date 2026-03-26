@@ -5,4 +5,5 @@ export interface TProduct {
     feature_image: string;
     product_images: string[];
     category: string[];
+    available_quantity: number;
 }

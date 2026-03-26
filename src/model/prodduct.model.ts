@@ -22,7 +22,12 @@ const productSchema = new Schema<TProduct>({
     product_images: {
         type: [String],
         default: [],
+    },
+    available_quantity: {
+        type: Number,
+        required: true,
     }
+
 },
     {
         timestamps: true,
