@@ -1,4 +1,4 @@
-import { model, Schema } from "mongoose";
+import mongoose, { model, Schema } from "mongoose";
 import { TProduct } from "../types/product.interface";
 
 const productSchema = new Schema<TProduct>({
@@ -26,6 +26,14 @@ const productSchema = new Schema<TProduct>({
     available_quantity: {
         type: Number,
         required: true,
+    },
+    category: {
+        type: [String],
+        required: true,
+    },
+    user: {
+        type: mongoose.Types.ObjectId,
+        ref: "User",
     }
 
 },

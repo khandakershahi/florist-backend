@@ -1,3 +1,5 @@
+import { Types } from "mongoose";
+
 export interface TProduct {
     title: string;
     description: string;
@@ -6,4 +8,5 @@ export interface TProduct {
     product_images: string[];
     category: string[];
     available_quantity: number;
+    user: Types.ObjectId;
 }

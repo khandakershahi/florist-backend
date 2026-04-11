@@ -1,17 +1,22 @@
 import config from "../config";
 import jwt, { Secret, SignOptions } from "jsonwebtoken";
+import { Types } from "mongoose";
 
 type JwtUserPayload = {
-    email: string,
-    role: string
-}
-
+    _id: Types.ObjectId | string;
+    name: string;
+    email: string;
+    role: string;
+};
 
 export const tokenGenerate = (user: JwtUserPayload): string => {
+    const userId = typeof user._id === "string" ? user._id : user._id.toString();
 
     const payload = {
+        userId,
+        name: user.name,
         email: user.email,
-        role: user.role
+        role: user.role,
     };
 
     const secret: Secret = config.jwt_secret as string;
@@ -26,4 +31,3 @@ export const tokenGenerate = (user: JwtUserPayload): string => {
 
     return token;
 }
-
